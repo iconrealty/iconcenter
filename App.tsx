@@ -99,7 +99,7 @@ const AppCard: React.FC<AppCardProps> = ({
           hover:shadow-lg hover:-translate-y-1 
           active:bg-gray-900 active:border-gray-900 active:scale-95 active:shadow-none active:translate-y-0
           transition-all duration-200 ease-out active:duration-0
-          flex flex-col items-center justify-center text-center aspect-square
+          flex flex-col items-c justify-center text-center aspect-square
           group/card cursor-pointer select-none`}
       >
         <div className="mb-3 p-3 rounded-2xl text-gray-700 transition-all duration-200 
@@ -198,7 +198,7 @@ const App = () => {
   // Handlers
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (loginPass === 'admin') { // Mock password
+    if (loginPass === 'icon') { // Mock password
       setUser({ name: 'Tim Manager', initials: 'TM', role: 'admin' });
       setIsLoginOpen(false);
       setLoginPass('');
@@ -364,7 +364,7 @@ const App = () => {
               <input 
                 type="password" 
                 className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors ${loginError ? 'border-red-300 bg-red-50' : 'border-gray-300'}`}
-                placeholder="Enter password (use 'admin')"
+                placeholder="Enter password"
                 value={loginPass}
                 onChange={(e) => setLoginPass(e.target.value)}
                 autoFocus
