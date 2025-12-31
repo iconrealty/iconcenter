@@ -364,7 +364,7 @@ const App = () => {
               <input 
                 type="password" 
                 className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors ${loginError ? 'border-red-300 bg-red-50' : 'border-gray-300'}`}
-                placeholder="Enter password (use 'admin')"
+                placeholder=" "
                 value={loginPass}
                 onChange={(e) => setLoginPass(e.target.value)}
                 autoFocus
