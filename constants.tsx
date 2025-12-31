@@ -5,7 +5,7 @@ export const INITIAL_APPS: AppLink[] = [
     id: '1',
     title: 'Team Properties',
     description: 'Active and off-market Properties',
-    url: 'https://iconrealty.softr.app/',
+    url: 'https://offmarket-eta.vercel.app',
     icon: 'MapPinned'
   },
   {
