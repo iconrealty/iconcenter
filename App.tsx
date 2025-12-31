@@ -70,9 +70,23 @@ const AppCard: React.FC<AppCardProps> = ({
   const IconComponent = (LucideIcons as any)[app.icon] || LucideIcons.LayoutGrid;
 
   const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Prevent default anchor navigation behavior
+    
     if (isEditing) {
-      e.preventDefault();
       onEdit(app);
+    } else {
+      // Open in a new "clean" window (popup style without toolbar/address bar)
+      const width = 1200;
+      const height = 800;
+      // Calculate center position
+      const left = window.screen.width ? (window.screen.width - width) / 2 : 100;
+      const top = window.screen.height ? (window.screen.height - height) / 2 : 100;
+      
+      window.open(
+        app.url, 
+        '_blank', 
+        `toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=${width},height=${height},top=${top},left=${left}`
+      );
     }
   };
 
@@ -93,8 +107,6 @@ const AppCard: React.FC<AppCardProps> = ({
       <a 
         href={isEditing ? undefined : app.url} 
         onClick={handleClick}
-        target={isEditing ? undefined : "_blank"}
-        rel={isEditing ? undefined : "noopener noreferrer"}
         className={`block h-full bg-white rounded-2xl p-4 shadow-sm border border-gray-100/50 
           hover:shadow-lg hover:-translate-y-1 
           active:bg-gray-900 active:border-gray-900 active:scale-95 active:shadow-none active:translate-y-0
@@ -364,7 +376,7 @@ const App = () => {
               <input 
                 type="password" 
                 className={`w-full p-2.5 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none transition-colors ${loginError ? 'border-red-300 bg-red-50' : 'border-gray-300'}`}
-                placeholder=" "
+                placeholder="Enter password (use 'admin')"
                 value={loginPass}
                 onChange={(e) => setLoginPass(e.target.value)}
                 autoFocus
