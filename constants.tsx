@@ -1,5 +1,10 @@
 import { AppLink } from './types';
 
+// INCREMENT THIS VERSION NUMBER (e.g. '1.1' -> '1.2') whenever you deploy changes 
+// to INITIAL_APPS. This will force all users' browsers to discard their old 
+// local save and load the new list from this file.
+export const APP_VERSION = '1.2';
+
 export const INITIAL_APPS: AppLink[] = [
   {
     id: '1',

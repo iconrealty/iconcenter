@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import * as LucideIcons from 'lucide-react';
 import { AppLink, User } from './types';
-import { INITIAL_APPS } from './constants';
+import { INITIAL_APPS, APP_VERSION } from './constants';
 import { Plus, X, Pencil, LogIn, Check, Search, Lock } from 'lucide-react';
 
 // --- Helper Components ---
@@ -183,9 +183,21 @@ const Modal: React.FC<ModalProps> = ({
 const App = () => {
   // State
   const [apps, setApps] = useState<AppLink[]>(() => {
-    const saved = localStorage.getItem('icon_app_center_data');
-    return saved ? JSON.parse(saved) : INITIAL_APPS;
+    // 1. Get stored data
+    const savedData = localStorage.getItem('icon_app_center_data');
+    const savedVersion = localStorage.getItem('icon_app_center_version');
+
+    // 2. Check compatibility
+    // If there is no saved version, or it doesn't match the code's version,
+    // we discard local data and use the fresh INITIAL_APPS.
+    if (savedVersion !== APP_VERSION) {
+      return INITIAL_APPS;
+    }
+    
+    // 3. Otherwise return saved data, or fallback to initial
+    return savedData ? JSON.parse(savedData) : INITIAL_APPS;
   });
+
   const [user, setUser] = useState<User | null>(null);
   const [isEditingMode, setIsEditingMode] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -202,9 +214,10 @@ const App = () => {
   const [loginPass, setLoginPass] = useState('');
   const [loginError, setLoginError] = useState(false);
 
-  // Persist Data
+  // Persist Data & Version
   useEffect(() => {
     localStorage.setItem('icon_app_center_data', JSON.stringify(apps));
+    localStorage.setItem('icon_app_center_version', APP_VERSION); // Sync version
   }, [apps]);
 
   // Handlers
