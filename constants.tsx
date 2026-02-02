@@ -75,5 +75,16 @@ export const INITIAL_APPS: AppLink[] = [
     description: 'OC Tax info',
     url: 'https://mello.ocgov.com/#!/search',
     icon: 'Banknote'
+  },
+{
+    id: '11',
+    title: 'Zip forms',
+    description: 'CAR forms',
+    url: 'https://login.car.org/login?state=hKFo2SBMOWR6eG5pZVFLaXFuaURhcTJUX2hHUl90cENhcHFsS6FupWxvZ2luo3RpZNkgQjIyT0V1SzNSaV94VHlOMlJjeXZyTUtUSXlGYXRUTzmjY2lk2SBaQTJWZjF1QmRQcXBjakRpSG8wcUtCRVZjaDhhaThlTw&client=ZA2Vf1uBdPqpcjDiHo0qKBEVch8ai8eO&protocol=oauth2&redirect_uri=https%3A%2F%2Fwww.car.org%2FCallback&response_type=code&scope=openid%20profile%20email&response_mode=form_post&nonce=639042748124751661.MTI4ZDg1MGItZDkwNi00YjA4LWI3MjYtZjhjMDRlN2IwM2NkYTA5YzFhNzEtMWNmMC00MmQ1LWIzYjctOTk3NTY5ZWE0MmY4&audience=https%3A%2F%2Fcarorg.us.auth0.com%2Fapi%2Fv2%2F&x-client-SKU=ID_NET461&x-client-ver=5.3.0.0
+',
+    icon: 'Banknote'
   }
+
+
+  
 ];
